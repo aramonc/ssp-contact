@@ -1,4 +1,4 @@
-ssphp-contact
+ssp-contact
 =============
 
 Contact module in ZF2 to be included into the SunshinePHP main site.
