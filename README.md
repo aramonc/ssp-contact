@@ -23,7 +23,7 @@ Installation
 
     ```json
     "require": {
-        "sunshinephp/ssphp-contact": "dev-master"
+        "sunshinephp/ssp-contact": "dev-master"
     }
     ```
 
