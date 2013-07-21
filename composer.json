@@ -11,7 +11,12 @@
     	}
     ],
     "require": {
-    	"php": ">=5.3.3",
+    	"php": ">=5.3.3"
+    },
+    "require-dev": {
+        "zendframework/zend-form": "<=2.2.1"
+    },
+    "suggest": {
         "aramonc/zf2-form-view-helpers": "dev-master"
     },
     "autoload": {
