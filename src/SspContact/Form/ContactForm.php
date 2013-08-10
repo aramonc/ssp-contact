@@ -100,7 +100,7 @@ class ContactForm extends Form
             )
         );
 
-        die(realpath(__DIR__ . '/../../../../../public/img'));
+        die(realpath(__DIR__ . '/../../../../../../public/img'));
 
         // CAPTCHA
         $this->add(
