@@ -40,7 +40,7 @@ class ContactForm extends Form
                     'id' => 'contact_first',
                 ),
                 'options' => array(
-                    'label' => 'First',
+                    'label' => 'First Name:',
                 ),
             )
         );
@@ -53,7 +53,7 @@ class ContactForm extends Form
                     'id' => 'contact_last',
                 ),
                 'options' => array(
-                    'label' => 'Last'
+                    'label' => 'Last Name:'
                 ),
             )
         );

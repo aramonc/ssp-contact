@@ -10,12 +10,23 @@ $contactForm->prepare();
             <?php echo $this->form()->openTag($contactForm->setAttribute('class', 'form-horizontal')); ?>
             <?php echo $this->arcControlGroup($contactForm->get('id')); ?>
             <?php echo $this->arcControlGroup($contactForm->get('is_active')); ?>
-            <?php echo $this->arcControlGroup($contactForm->get('first_name')); ?>
-            <?php echo $this->arcControlGroup($contactForm->get('last_name')); ?>
-            <?php echo $this->arcControlGroup($contactForm->get('email')); ?>
-            <?php echo $this->arcControlGroup($contactForm->get('subject')); ?>
-            <?php echo $this->arcControlGroup($contactForm->get('message')); ?>
+            <div class="row-fluid">
+                <div class="span6">
+                    <?php echo $this->arcControlGroup($contactForm->get('first_name')->setAttribute('class', 'input-block')); ?>
+                </div>
+                <div class="span6">
+                    <?php echo $this->arcControlGroup($contactForm->get('last_name')->setAttribute('class', 'input-block')); ?>
+                </div>
+            </div>
+            <?php echo $this->arcControlGroup($contactForm->get('email')->setAttribute('class', 'input-block')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('subject')->setAttribute('class', 'input-block')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('message')->setAttribute('class', 'input-block')); ?>
             <?php echo $this->arcControlGroup($contactForm->get('human_test')); ?>
+            <div class="control-group">
+                <div class="controls pull-right">
+                    <input type="submit" id="submit_contact" class="btn btn-primary" />
+                </div>
+            </div>
             <?php echo $this->form()->closeTag($contactForm); ?>
         </div>
     </div>
