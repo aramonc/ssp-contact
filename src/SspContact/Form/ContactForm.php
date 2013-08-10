@@ -100,6 +100,8 @@ class ContactForm extends Form
             )
         );
 
+        die(realpath(__DIR__ . '/../../../data/data-latin.ttf'));
+
         // CAPTCHA
         $this->add(
             array(
