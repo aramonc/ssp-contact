@@ -18,16 +18,7 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                    'foo' => array(
-                        'type'    => 'Literal',
-                        'options' => array(
-                            'route'    => '/foo',
-                            'defaults' => array(
-                                'controller' => 'sspcontact-contact-controller',
-                                'action'     => 'foo',
-                            ),
-                        ),
-                    ),
+
                 ),
             ),
         ),

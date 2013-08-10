@@ -10,10 +10,31 @@ class ContactForm extends Form
     {
         parent::__construct($name);
 
-        //Name
+        // HIDDENS
         $this->add(
             array(
-                'name' => 'first',
+                'name' => 'id',
+                'type' => 'Hidden',
+                'attributes' => array(
+                    'id' => 'contact_id',
+                ),
+            )
+        );
+
+        $this->add(
+            array(
+                'name' => 'is_active',
+                'type' => 'Hidden',
+                'attributes' => array(
+                    'id' => 'contact_active',
+                ),
+            )
+        );
+
+        // NAME
+        $this->add(
+            array(
+                'name' => 'first_name',
                 'type' => 'Text',
                 'attributes' => array(
                     'id' => 'contact_first',
@@ -26,7 +47,7 @@ class ContactForm extends Form
 
         $this->add(
             array(
-                'name' => 'last',
+                'name' => 'last_name',
                 'type' => 'Text',
                 'attributes' => array(
                     'id' => 'contact_last',
@@ -37,7 +58,7 @@ class ContactForm extends Form
             )
         );
 
-        //Email
+        // EMAIL
         $this->add(
             array(
                 'name' => 'email',
@@ -51,7 +72,7 @@ class ContactForm extends Form
             )
         );
 
-        //Subject
+        // SUBJECT
         $this->add(
             array(
                 'name' => 'subject',
@@ -65,7 +86,7 @@ class ContactForm extends Form
             )
         );
 
-        //Message
+        // MESSAGE
         $this->add(
             array(
                 'name' => 'message',
@@ -79,7 +100,7 @@ class ContactForm extends Form
             )
         );
 
-        //Captcha
+        // CAPTCHA
         $this->add(
             array(
                 'name' => 'human_test',

@@ -13,8 +13,5 @@ class ContactController extends AbstractActionController
         return array('form' => $contactForm);
     }
 
-    public function fooAction()
-    {
-        return array();
-    }
+
 }

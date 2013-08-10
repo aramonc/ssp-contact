@@ -5,6 +5,18 @@ $contactForm = $this->form;
 $contactForm->prepare();
 ?>
 <div class="container">
-    <?php echo $this->form()->openTag($contactForm); ?>
-    <?php ?>
+    <div class="row-fluid">
+        <div class="span7">
+            <?php echo $this->form()->openTag($contactForm); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('id')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('is_active')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('first_name')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('last_name')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('email')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('subject')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('message')); ?>
+            <?php echo $this->arcControlGroup($contactForm->get('human_test')); ?>
+            <?php echo $this->form()->closeTag($contactForm); ?>
+        </div>
+    </div>
 </div>
