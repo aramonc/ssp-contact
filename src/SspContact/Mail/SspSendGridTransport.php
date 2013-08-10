@@ -40,7 +40,7 @@ class SspSendGridTransport implements TransportInterface
             'subject' => $message->getSubject(),
             'from' => $message->getFrom()->current()->getEmail(),
             'fromname' => $message->getFrom()->current()->getName(),
-            'bcc' => $message->getBcc(),
+            'bcc' => $message->getBcc()->current()->getEmail(),
             'text' => $message->getBodyText(),
             'api_user' => $this->config['user'],
             'api_key' => $this->config['key'],
