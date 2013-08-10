@@ -231,8 +231,8 @@ class Contact extends \ArrayObject
         $data['subject'] = $this->getSubject();
         $data['message'] = $this->getMessage();
         $data['is_active'] = intval($this->getIsActive());
-        $data['created'] = $this->getCreated()->format('Y-m-d H:i:s');
-        $data['modified'] = $this->getModified()->format('Y-m-d H:i:s');
+        $data['created'] = $this->getCreated() instanceof \DateTime ? $this->getCreated()->format('Y-m-d H:i:s') : $this->getCreated();
+        $data['modified'] = $this->getModified() instanceof \DateTime ? $this->getModified()->format('Y-m-d H:i:s') : $this->getModified();
 
         return $data;
     }
