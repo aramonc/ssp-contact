@@ -48,6 +48,16 @@ class ContactFilter extends InputFilter
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
                 ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 2,
+                            'max' => 255,
+                        ),
+                    ),
+                ),
             )
         );
 
@@ -58,6 +68,16 @@ class ContactFilter extends InputFilter
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 2,
+                            'max' => 255,
+                        ),
+                    ),
                 ),
             )
         );
@@ -77,6 +97,14 @@ class ContactFilter extends InputFilter
                         'options' => array(
                             'allow' => Hostname::ALLOW_DNS,
                             'domain' => true,
+                        ),
+                    ),
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 2,
+                            'max' => 255,
                         ),
                     ),
                 ),
