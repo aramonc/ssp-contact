@@ -8,6 +8,7 @@
  */
 
 namespace SspContact;
+date_default_timezone_set("America/New_York");
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
