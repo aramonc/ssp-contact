@@ -11,14 +11,14 @@ class ContactController extends AbstractActionController
     public function indexAction()
     {
         $contactForm = new ContactForm();
-        $contactForm->setAttribute('action', $this->url()->fromRoute('contact', array('action' => 'send')));
+        $contactForm->setAttribute('action', $this->url()->fromRoute('contact-index', array('action' => 'send')));
 
         $this->flashMessenger()->setNamespace('contact-errors');
         $messages = false;
         if ($this->flashMessenger()->hasMessages()) {
             $messages = $this->flashMessenger()->getMessagesFromNamespace('contact-errors');
             $contactForm->setMessages($messages[0]);
-            $data = $this->prg($this->url()->fromRoute('account', array('action' => 'index')), true);
+            $data = $this->prg($this->url()->fromRoute('contact-index', array('action' => 'index')), true);
             if (is_array($data)) {
                 $contactForm->setData($data);
             }
@@ -38,10 +38,10 @@ class ContactController extends AbstractActionController
         $filter->setData($data);
         if(!$filter->isValid()) {
             $this->flashMessenger()->addMessage($filter->getMessages());
-            return $this->prg($this->url()->fromRoute('account', array('action' => 'send')), true);
+            return $this->prg($this->url()->fromRoute('contact-index', array('action' => 'send')), true);
         }
 
-        return $this->redirect()->toRoute('contact', array('action' => 'thanks'));
+        return $this->redirect()->toRoute('contact-index', array('action' => 'thanks'));
     }
 
     public function thanksAction()
