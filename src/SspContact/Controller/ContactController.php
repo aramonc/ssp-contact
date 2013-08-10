@@ -5,6 +5,9 @@ namespace SspContact\Controller;
 use SspContact\Entity\Contact as ContactEntity;
 use SspContact\Form\ContactFilter;
 use SspContact\Form\ContactForm;
+use SspContact\Mail\SspSendGridTransport;
+use Zend\Mail\Address;
+use Zend\Mail\Message;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class ContactController extends AbstractActionController
@@ -45,9 +48,34 @@ class ContactController extends AbstractActionController
 
         $entity = new ContactEntity($filter->getValues());
 
+        // SAVE TO THE DB
         /* @var $mapper \SspContact\Mapper\Contact */
         $mapper = $this->getServiceLocator()->get('contact_mapper');
         $mapper->insert($entity);
+
+        // PREPARE THE EMAIL MESSAGE
+        $message = new Message();
+        $message->addFrom(new Address($entity->getEmail(),$entity->getFirstName() . ' ' . $entity->getLastName()));
+        $message->setSubject($entity->getSubject());
+
+        $body = <<<MSG
+New Message \n
+From: $entity->getFirstName() $entity->getLastName() \n
+Subject: $entity->getSubject() \n
+Message: $entity->getMessage() \n
+MSG;
+
+        $message->setBody($body);
+
+        // SEND THE EMAIL
+
+//        $transport = new SspSendGridTransport($this->getServiceLocator()->get('Config'));
+//        $transport->send($message);
+        $result = $this->getServiceLocator()->get('transport')->send($message);
+        if(isset($result['message']) && $result['message'] == 'error') {
+            $this->flashMessenger()->addMessage($result['errors']);
+            return $this->prg($this->url()->fromRoute('contact-index', array('action' => 'index')), true);
+        }
 
 
         return $this->redirect()->toRoute('contact-index', array('action' => 'thanks'));

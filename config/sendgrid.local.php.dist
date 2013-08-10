@@ -1,0 +1,9 @@
+<?php
+return array(
+    'send_grid' => array(
+        'url' => 'https://sendgrid.com/api/mail.send.json',
+        'user' => '',
+        'key' => '',
+        'to' => ''
+    ),
+);

@@ -44,7 +44,7 @@ class Contact extends \ArrayObject
      */
     public $modified;
 
-    public function __construct($data)
+    public function __construct($data = null)
     {
         if(is_array($data)) {
             $this->exchangeArray($data);
