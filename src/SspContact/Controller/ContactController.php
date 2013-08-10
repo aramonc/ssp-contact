@@ -2,15 +2,15 @@
 
 namespace SspContact\Controller;
 
+use SspContact\Form\ContactForm;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class ContactController extends AbstractActionController
 {
     public function indexAction()
     {
-        echo 'contact-controller-test';
-        
-        return array();
+        $contactForm = new ContactForm();
+        return array('form' => $contactForm);
     }
 
     public function fooAction()

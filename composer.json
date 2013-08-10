@@ -11,15 +11,12 @@
     	}
     ],
     "require": {
-    	"php": ">=5.3.3"
-    },
-    "require-dev": {
-        "zendframework/zend-form": "<=2.2.1",
+    	"php": ">=5.3.3",
         "zf-commons/zfc-base": "dev-master",
         "aramonc/zf2-form-view-helpers": "dev-master"
     },
-    "suggest": {
-        "aramonc/zf2-form-view-helpers": "dev-master"
+    "require-dev": {
+        "zendframework/zend-form": "<=2.2.1"
     },
     "autoload": {
         "psr-0": {

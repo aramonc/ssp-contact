@@ -1,7 +1,10 @@
-<strong>Module:</strong>        SsphpContact &raquo;
-<strong>Controller:</strong>    Contact &raquo;
-<strong>Action:</strong>        index
-
+<?php $this->headTitle()->append('Contact Us'); ?>
 <?php
-
-echo 'deeper contact-view-index-test';
+$contactForm = $this->form;
+/* @var $contactForm \Zend\Form\Form */
+$contactForm->prepare();
+?>
+<div class="container">
+    <?php echo $this->form()->openTag($contactForm); ?>
+    <?php ?>
+</div>
