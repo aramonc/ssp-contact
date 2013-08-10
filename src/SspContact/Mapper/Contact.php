@@ -12,6 +12,14 @@ class Contact extends AbstractDbMapper
 
     public function insert(ContactEntity $contact)
     {
+        if($contact->getId() != null) {
+            return $this->update($contact);
+        }
         return parent::insert($contact);
+    }
+
+    public function update(ContactEntity $contact)
+    {
+        return parent::update($contact, array('id' => $contact->getId()));
     }
 }
