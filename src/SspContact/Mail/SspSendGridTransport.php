@@ -36,13 +36,13 @@ class SspSendGridTransport implements TransportInterface
         $consumer->setUrl($this->config['url']);
 
         $params = array(
-            'to' => $this->config['to'],
-            'subject' => $message->getSubject(),
-            'from' => $message->getFrom()->current()->getEmail(),
-            'fromname' => $message->getFrom()->current()->getName(),
-            'text' => $message->getBodyText(),
-            'api_user' => $this->config['user'],
-            'api_key' => $this->config['key'],
+            'to' => urlencode($this->config['to']),
+            'subject' => urlencode($message->getSubject()),
+            'from' => urlencode($message->getFrom()->current()->getEmail()),
+            'fromname' => urlencode($message->getFrom()->current()->getName()),
+            'text' => urlencode($message->getBodyText()),
+            'api_user' => urlencode($this->config['user']),
+            'api_key' => urlencode($this->config['key']),
         );
 
         $bcc = $message->getBcc()->current();

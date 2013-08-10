@@ -60,9 +60,9 @@ class ContactController extends AbstractActionController
 
         $body = <<<MSG
 New Message \n
-From: $entity->getFirstName() $entity->getLastName() \n
-Subject: $entity->getSubject() \n
-Message: $entity->getMessage() \n
+From: {$entity->getFirstName()} {$entity->getLastName()} \n
+Subject: {$entity->getSubject()} \n
+Message: {$entity->getMessage()} \n
 MSG;
 
         $message->setBody($body);
