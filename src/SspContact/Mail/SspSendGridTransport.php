@@ -14,7 +14,8 @@ use ApiConsumer\Consumer;
 use Zend\Mail\Transport\TransportInterface;
 use Zend\Mail;
 
-class SspSendGridTransport implements TransportInterface {
+class SspSendGridTransport implements TransportInterface
+{
 
     protected $config;
 
@@ -41,6 +42,8 @@ class SspSendGridTransport implements TransportInterface {
             'fromname' => $message->getFrom()->current()->getName(),
             'bcc' => $message->getBcc(),
             'text' => $message->getBodyText(),
+            'api_user' => $this->config['user'],
+            'api_key' => $this->config['key'],
         );
 
         $consumer->setParams($params);
