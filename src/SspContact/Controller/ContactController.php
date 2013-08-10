@@ -21,6 +21,7 @@ class ContactController extends AbstractActionController
             $data = $this->prg($this->url()->fromRoute('contact-index', array('action' => 'index')), true);
             if (is_array($data)) {
                 $contactForm->setData($data);
+                $contactForm->isValid();
             }
         }
 

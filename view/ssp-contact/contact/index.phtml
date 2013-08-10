@@ -15,7 +15,7 @@ $contactForm->prepare();
                     <section id="block-download">
                         <div class="row-fluid">
                             <div class="span8">
-                                <?php if (!$contactForm->isValid()): ?>
+                                <?php if ($contactForm->hasValidated() && !$contactForm->isValid()): ?>
                                     <div class="alert alert-error">
                                         <?php $elements = $contactForm->getElements(); ?>
                                         <?php foreach ($elements as $element): ?>
