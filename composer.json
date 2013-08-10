@@ -14,7 +14,9 @@
     	"php": ">=5.3.3"
     },
     "require-dev": {
-        "zendframework/zend-form": "<=2.2.1"
+        "zendframework/zend-form": "<=2.2.1",
+        "aramonc/zf2-form-view-helpers": "dev-master",
+        "adamculp/api-consumer": "dev-master"
     },
     "autoload": {
         "psr-0": {

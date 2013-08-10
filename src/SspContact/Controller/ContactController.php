@@ -68,9 +68,6 @@ MSG;
         $message->setBody($body);
 
         // SEND THE EMAIL
-
-//        $transport = new SspSendGridTransport($this->getServiceLocator()->get('Config'));
-//        $transport->send($message);
         $result = $this->getServiceLocator()->get('transport')->send($message);
         if(isset($result['message']) && $result['message'] == 'error') {
             $this->flashMessenger()->addMessage($result['errors']);
