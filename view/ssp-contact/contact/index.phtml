@@ -7,7 +7,7 @@ $contactForm->prepare();
 <div class="container">
     <div class="row-fluid">
         <div class="span7">
-            <?php echo $this->form()->openTag($contactForm); ?>
+            <?php echo $this->form()->openTag($contactForm->setAttribute('class', 'form-horizontal')); ?>
             <?php echo $this->arcControlGroup($contactForm->get('id')); ?>
             <?php echo $this->arcControlGroup($contactForm->get('is_active')); ?>
             <?php echo $this->arcControlGroup($contactForm->get('first_name')); ?>
