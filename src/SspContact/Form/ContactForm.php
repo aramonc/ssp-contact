@@ -100,8 +100,6 @@ class ContactForm extends Form
             )
         );
 
-        die(realpath(__DIR__ . '/../../../../../../public/img'));
-
         // CAPTCHA
         $this->add(
             array(
@@ -112,7 +110,7 @@ class ContactForm extends Form
                     'captcha' => new Image(array(
                         'expiration' => 3600,
                         'font' => realpath(__DIR__ . '/../../../data/data-latin.ttf'),
-                        'imgDir' => realpath(__DIR__ . '/../../../../../public/img'),
+                        'imgDir' => realpath(__DIR__ . '/../../../../../../public/img'),
                         'imgUrl' => '/img',
                     )),
                 ),
