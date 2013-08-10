@@ -44,6 +44,13 @@ class Contact extends \ArrayObject
      */
     public $modified;
 
+    public function __construct($data)
+    {
+        if(is_array($data)) {
+            $this->exchangeArray($data);
+        }
+    }
+
     /**
      * @param string $created
      */

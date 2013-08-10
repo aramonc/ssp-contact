@@ -2,6 +2,7 @@
 
 namespace SspContact\Controller;
 
+use SspContact\Entity\Contact as ContactEntity;
 use SspContact\Form\ContactFilter;
 use SspContact\Form\ContactForm;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -14,9 +15,9 @@ class ContactController extends AbstractActionController
         $contactForm->setAttribute('action', $this->url()->fromRoute('contact-index', array('action' => 'send')));
 
         $this->flashMessenger()->setNamespace('contact-errors');
-        $messages = false;
         if ($this->flashMessenger()->hasMessages()) {
             $messages = $this->flashMessenger()->getMessagesFromNamespace('contact-errors');
+
             $contactForm->setMessages($messages[0]);
             $data = $this->prg($this->url()->fromRoute('contact-index', array('action' => 'index')), true);
             if (is_array($data)) {
@@ -39,8 +40,15 @@ class ContactController extends AbstractActionController
         $filter->setData($data);
         if(!$filter->isValid()) {
             $this->flashMessenger()->addMessage($filter->getMessages());
-            return $this->prg($this->url()->fromRoute('contact-index', array('action' => 'send')), true);
+            return $this->prg($this->url()->fromRoute('contact-index', array('action' => 'index')), true);
         }
+
+        $entity = new ContactEntity($filter->getValues());
+
+        /* @var $mapper \SspContact\Mapper\Contact */
+        $mapper = $this->getServiceLocator()->get('contact_mapper');
+        $mapper->insert($entity);
+
 
         return $this->redirect()->toRoute('contact-index', array('action' => 'thanks'));
     }

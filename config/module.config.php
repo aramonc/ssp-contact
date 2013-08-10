@@ -8,24 +8,29 @@ return array(
     'router' => array(
         'routes' => array(
             'contact-index' => array(
-                'type'    => 'Literal',
+                'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/contact',
+                    'route'    => '/contact[/:action]',
+                    'constraints' => array(
+                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]+',
+                    ),
                     'defaults' => array(
                         'controller'    => 'sspcontact-contact-controller',
                         'action'        => 'index',
                     ),
                 ),
                 'may_terminate' => true,
-                'child_routes' => array(
-
-                ),
             ),
         ),
     ),
     'view_manager' => array(
         'template_path_stack' => array(
             'SspContact' => __DIR__ . '/../view',
+        ),
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'contact_mapper' => 'SspContact\Factory\ContactMapperFactory',
         ),
     ),
 );
