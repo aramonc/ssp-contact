@@ -110,8 +110,8 @@ class ContactForm extends Form
                     'captcha' => new Image(array(
                         'expiration' => 3600,
                         'font' => realpath(__DIR__ . '/../../../data/data-latin.ttf'),
-                        'imgDir' => realpath(__DIR__ . '/../../../../../../public/img'),
-                        'imgUrl' => '/img',
+                        'imgDir' => realpath(__DIR__ . '/../../../../../../public/img/captchas'),
+                        'imgUrl' => '/img/captchas',
                     )),
                 ),
             )

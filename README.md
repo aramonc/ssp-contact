@@ -47,3 +47,7 @@ Installation
         // ...
     );
     ```
+
+2. Ensure to add the needed contacts table to the database using the sql file in data.
+
+3. Also ensure that you create a subdirectory '/public/img/captchas' which will capture all of the captcha images created by the contact form, and make sure it is writable.
