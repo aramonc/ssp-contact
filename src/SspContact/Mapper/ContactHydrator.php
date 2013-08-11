@@ -15,7 +15,7 @@ class ContactHydrator extends ClassMethods
     public function extract($object)
     {
         if(!$object instanceof ContactEntity) {
-            throw new \Exception("$object must me an instance of SspContact\\Entity\\Contact.");
+            throw new \Exception("$object must be an instance of SspContact\\Entity\\Contact.");
         }
         return $object->toArray();
     }
@@ -29,7 +29,7 @@ class ContactHydrator extends ClassMethods
     public function hydrate(array $data, $object)
     {
         if(!$object instanceof ContactEntity) {
-            throw new \Exception("$object must me an instance of SspContact\\Entity\\Contact.");
+            throw new \Exception("$object must be an instance of SspContact\\Entity\\Contact.");
         }
         $object->exchangeArray($data);
         return $object;
