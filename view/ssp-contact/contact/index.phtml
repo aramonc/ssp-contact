@@ -4,68 +4,47 @@ $contactForm = $this->form;
 /* @var $contactForm \Zend\Form\Form */
 $contactForm->prepare();
 ?>
-<div class="container">
-
+<div class="page-header">
+    <h1>Contact Us</h1>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="span12">
-            <div class="row">
-                <div class="span9">
-                    <section id="block-download">
-                        <ul class="breadcrumb">
-                            <li><a href="/">Home</a> <span class="divider">/</span></li>
-                            <li class="active">SunshinePHP Conference</li>
-                        </ul>
-                        <div class="page-header">
-                            <h1>Contact Us</h1>
-                        </div>
-                        <div id="block-mine">
-                            <p>Please use the form below to contact us.</p>
-                            <p>&nbsp;</p>
+<div id="block-mine">
+    <p>Please use the form below to contact us.</p>
+    <p>&nbsp;</p>
 
-                            <?php if ($contactForm->hasValidated() && !$contactForm->isValid()): ?>
-                                <div class="alert alert-error">
-                                    <?php $elements = $contactForm->getElements(); ?>
-                                    <?php foreach ($elements as $element): ?>
-                                        <?php echo $this->formElementErrors($element); ?>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php endif; ?>
-                            <?php echo $this->form()->openTag(
-                                $contactForm->setAttribute('class', 'form-horizontal')
-                            ); ?>
-                            <?php echo $this->arcControlGroup($contactForm->get('id')); ?>
-                            <?php echo $this->arcControlGroup($contactForm->get('is_active')); ?>
-                            <?php echo $this->arcControlGroup(
-                                $contactForm->get('first_name')->setAttribute('class', 'input-block-level')
-                            ); ?>
-                            <?php echo $this->arcControlGroup(
-                                $contactForm->get('last_name')->setAttribute('class', 'input-block-level')
-                            ); ?>
-                            <?php echo $this->arcControlGroup(
-                                $contactForm->get('email')->setAttribute('class', 'input-block-level')
-                            ); ?>
-                            <?php echo $this->arcControlGroup(
-                                $contactForm->get('subject')->setAttribute('class', 'input-block-level')
-                            ); ?>
-                            <?php echo $this->arcControlGroup(
-                                $contactForm->get('message')->setAttribute('class', 'input-block-level')
-                            ); ?>
-                            <?php echo $this->arcControlGroup($contactForm->get('human_test')); ?>
-                            <div class="control-group">
-                                <div class="controls pull-right">
-                                    <input type="submit" id="submit_contact" class="btn btn-primary"/>
-                                </div>
-                            </div>
-                            <?php echo $this->form()->closeTag($contactForm); ?>
-
-                        </div>
-
-                    </section>
-                </div>
-                <?php echo $this->sidebar(); ?>
-            </div>
+    <?php if ($contactForm->hasValidated() && !$contactForm->isValid()): ?>
+        <div class="alert alert-error">
+            <?php $elements = $contactForm->getElements(); ?>
+            <?php foreach ($elements as $element): ?>
+                <?php echo $this->formElementErrors($element); ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    <?php echo $this->form()->openTag(
+        $contactForm->setAttribute('class', 'form-horizontal')
+    ); ?>
+    <?php echo $this->arcControlGroup($contactForm->get('id')); ?>
+    <?php echo $this->arcControlGroup($contactForm->get('is_active')); ?>
+    <?php echo $this->arcControlGroup(
+        $contactForm->get('first_name')->setAttribute('class', 'input-block-level')
+    ); ?>
+    <?php echo $this->arcControlGroup(
+        $contactForm->get('last_name')->setAttribute('class', 'input-block-level')
+    ); ?>
+    <?php echo $this->arcControlGroup(
+        $contactForm->get('email')->setAttribute('class', 'input-block-level')
+    ); ?>
+    <?php echo $this->arcControlGroup(
+        $contactForm->get('subject')->setAttribute('class', 'input-block-level')
+    ); ?>
+    <?php echo $this->arcControlGroup(
+        $contactForm->get('message')->setAttribute('class', 'input-block-level')
+    ); ?>
+    <?php echo $this->arcControlGroup($contactForm->get('human_test')); ?>
+    <div class="control-group">
+        <div class="controls pull-right">
+            <input type="submit" id="submit_contact" class="btn btn-primary"/>
         </div>
     </div>
+    <?php echo $this->form()->closeTag($contactForm); ?>
+
 </div>
