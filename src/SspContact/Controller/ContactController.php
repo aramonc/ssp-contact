@@ -36,51 +36,34 @@ class ContactController extends AbstractActionController
     {
         $this->flashMessenger()->setNamespace('contact-errors');
         $this->flashMessenger()->clearMessages();
+
         $data = $this->params()->fromPost();
-        $filter = new ContactFilter();
+
+        /* @var $contactService \SspContact\Service\ContactService */
+        $contactService = $this->getServiceLocator()->get('contact_service');
 
         // FILTER & RETURN ERRORS
-        $filter->setData($data);
-        if(!$filter->isValid()) {
-            $this->flashMessenger()->addMessage($filter->getMessages());
+        if(!$contactService->contactIsValid($data)) {
+            $this->flashMessenger()->addMessage($contactService->getContactFilter()->getMessages());
             return $this->prg($this->url()->fromRoute('contact-index', array('action' => 'index')), true);
         }
 
-        $entity = new ContactEntity($filter->getValues());
+        $message = new ContactEntity($contactService->getContactFilter()->getRawValues());
 
-        // SAVE TO THE DB
-        /* @var $mapper \SspContact\Mapper\Contact */
-        $mapper = $this->getServiceLocator()->get('contact_mapper');
-        $mapper->insert($entity);
+        $contactService->saveContact($message);
 
-        // PREPARE THE EMAIL MESSAGE
-        $message = new Message();
-        $message->addFrom(new Address($entity->getEmail(),$entity->getFirstName() . ' ' . $entity->getLastName()));
-        $message->setSubject($entity->getSubject());
+        $sendResult = $contactService->sendMessage($message);
 
-        $body = <<<MSG
-New Message \n
-From: {$entity->getFirstName()} {$entity->getLastName()} \n
-Subject: {$entity->getSubject()} \n
-Message: {$entity->getMessage()} \n
-MSG;
-
-        $message->setBody($body);
-
-        // SEND THE EMAIL
-        $result = $this->getServiceLocator()->get('transport')->send($message);
-        if(isset($result['message']) && $result['message'] == 'error') {
-            $this->flashMessenger()->addMessage($result['errors']);
+        if(isset($sendResult['message']) && $sendResult['message'] == 'error') {
+            $this->flashMessenger()->addMessage($sendResult['errors']);
             return $this->prg($this->url()->fromRoute('contact-index', array('action' => 'index')), true);
         }
-
 
         return $this->redirect()->toRoute('contact-index', array('action' => 'thanks'));
     }
 
     public function thanksAction()
     {
-
         return array();
     }
 
