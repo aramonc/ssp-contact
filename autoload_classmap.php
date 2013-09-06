@@ -13,4 +13,5 @@ return array(
   'SspContact\Mail\SspSendGridTransport'    => __DIR__ . '/src/SspContact/Mail/SspSendGridTransport.php',
   'SspContact\Controller\ContactController' => __DIR__ . '/src/SspContact/Controller/ContactController.php',
   'SspContact\Entity\Contact'               => __DIR__ . '/src/SspContact/Entity/Contact.php',
+  'SspContact\Service\ContactService'       => __DIR__ . '/src/SspContact/Service/ContactService.php',
 );
