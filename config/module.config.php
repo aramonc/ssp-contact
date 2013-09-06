@@ -33,6 +33,9 @@ return array(
             'contact_mapper' => 'SspContact\Factory\ContactMapperFactory',
             'transport' => 'SspContact\Factory\MailTransportFactory',
         ),
+        'invokables' => array(
+            'contact_service' => 'SspContact\Service\ContactService',
+        ),
     ),
     'contact' => array(
         'transport_class' => 'SspContact\\Mail\\SspSendGridTransport',
