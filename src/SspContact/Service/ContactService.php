@@ -50,7 +50,7 @@ class ContactService implements ServiceLocatorAwareInterface
         $body = <<<MSG
 New Message \n
 From: {$contactMessage->getFirstName()} {$contactMessage->getLastName()} \n
-Subject: {$contactMessage->getSubject()} \n
+Subject: [contact] {$contactMessage->getSubject()} \n
 Message: {$contactMessage->getMessage()} \n
 MSG;
 
