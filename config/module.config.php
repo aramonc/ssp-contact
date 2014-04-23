@@ -23,6 +23,18 @@ return array(
             ),
         ),
     ),
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Contact',
+                'route' => 'contact-index',
+                'lastmod' => '2013-09-08',
+                'changefreq' => 'monthly',
+                'priority' => '0.5',
+                'order' => '900',
+            ),
+        ),
+    ),
     'view_manager' => array(
         'template_path_stack' => array(
             'SspContact' => __DIR__ . '/../view',
