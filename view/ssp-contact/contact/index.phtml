@@ -22,24 +22,52 @@ $contactForm->prepare();
     <?php echo $this->form()->openTag(
         $contactForm->setAttribute('class', 'form-horizontal')
     ); ?>
-    <?php echo $this->arcControlGroup($contactForm->get('id')); ?>
-    <?php echo $this->arcControlGroup($contactForm->get('is_active')); ?>
-    <?php echo $this->arcControlGroup(
-        $contactForm->get('first_name')->setAttribute('class', 'input-block-level')
-    ); ?>
-    <?php echo $this->arcControlGroup(
-        $contactForm->get('last_name')->setAttribute('class', 'input-block-level')
-    ); ?>
-    <?php echo $this->arcControlGroup(
-        $contactForm->get('email')->setAttribute('class', 'input-block-level')
-    ); ?>
-    <?php echo $this->arcControlGroup(
-        $contactForm->get('subject')->setAttribute('class', 'input-block-level')
-    ); ?>
-    <?php echo $this->arcControlGroup(
-        $contactForm->get('message')->setAttribute('class', 'input-block-level')
-    ); ?>
-    <?php echo $this->arcControlGroup($contactForm->get('human_test')); ?>
+    <?php echo $this->formHidden($contactForm->get('id')); ?>
+    <?php echo $this->formHidden($contactForm->get('is_active')); ?>
+
+    <?php // FIRST NAME ?>
+    <div class="control-group">
+        <?php echo $this->formLabel($contactForm->get('first_name')->setLabelAttributes(array('class' => 'control-label'))); ?>
+        <div class="controls">
+            <?php echo $this->formText($contactForm->get('first_name')->setAttribute('class', 'input-block-level')); ?>
+        </div>
+    </div>
+    <?php // LAST NAME ?>
+    <div class="control-group">
+        <?php echo $this->formLabel($contactForm->get('last_name')->setLabelAttributes(array('class' => 'control-label'))); ?>
+        <div class="controls">
+            <?php echo $this->formText($contactForm->get('last_name')->setAttribute('class', 'input-block-level')); ?>
+        </div>
+    </div>
+    <?php // EMAIL ?>
+    <div class="control-group">
+        <?php echo $this->formLabel($contactForm->get('email')->setLabelAttributes(array('class' => 'control-label'))); ?>
+        <div class="controls">
+            <?php echo $this->formEmail($contactForm->get('email')->setAttribute('class', 'input-block-level')); ?>
+        </div>
+    </div>
+    <?php // SUBJECT ?>
+    <div class="control-group">
+        <?php echo $this->formLabel($contactForm->get('subject')->setLabelAttributes(array('class' => 'control-label'))); ?>
+        <div class="controls">
+            <?php echo $this->formText($contactForm->get('subject')->setAttribute('class', 'input-block-level')); ?>
+        </div>
+    </div>
+    <?php // MESSAGE ?>
+    <div class="control-group">
+        <?php echo $this->formLabel($contactForm->get('message')->setLabelAttributes(array('class' => 'control-label'))); ?>
+        <div class="controls">
+            <?php echo $this->formTextarea($contactForm->get('message')->setAttribute('class', 'input-block-level')); ?>
+        </div>
+    </div>
+    <?php // MESSAGE ?>
+    <div class="control-group">
+        <?php echo $this->formLabel($contactForm->get('human_test')->setLabelAttributes(array('class' => 'control-label'))); ?>
+        <div class="controls">
+            <?php echo $this->formCaptcha($contactForm->get('human_test')->setAttribute('class', 'input-block-level')); ?>
+        </div>
+    </div>
+
     <div class="control-group">
         <div class="controls pull-right">
             <input type="submit" id="submit_contact" value="Submit Form" class="btn btn-primary"/>
