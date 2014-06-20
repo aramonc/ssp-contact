@@ -2,17 +2,23 @@
     "name": "sunshinephp/ssp-contact",
     "description": "Contact module for use in the SunshinePHP site.",
     "type": "library",
-    "keywords": ["ssphp","ssp"],
+    "keywords": ["ssphp", "ssp"],
     "authors": [
-    	{
-    		"name": "Adam Culp",
-    		"email": "adamculp@uws.net",
-    		"homepage": "http://geekyboy.com"
-    	}
+        {
+            "name": "Adam Culp",
+            "email": "adamculp@uws.net",
+            "homepage": "http://geekyboy.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/aramonc/zf2-form-view-helpers"
+        }
     ],
     "require": {
         "aramonc/zf2-form-view-helpers": "dev-master",
-    	"php": ">=5.3.3"
+        "php": ">=5.3.3"
     },
     "require-dev": {
         "zendframework/zend-form": "<=2.2.1",
